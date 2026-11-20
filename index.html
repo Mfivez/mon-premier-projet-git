@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Le Site Le Plus Inutile Du Monde 🎉</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+      background-size: 400% 400%;
+      animation: arcEnCiel 6s ease infinite;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+    }
+    @keyframes arcEnCiel {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    h1 {
+      font-size: clamp(2rem, 8vw, 5rem);
+      color: #fff;
+      text-shadow: 3px 3px 0 #f0f, 6px 6px 0 #0ff;
+      margin-top: 2rem;
+      animation: tremble 0.3s infinite;
+    }
+    @keyframes tremble {
+      0% { transform: rotate(-2deg) scale(1); }
+      50% { transform: rotate(2deg) scale(1.05); }
+      100% { transform: rotate(-2deg) scale(1); }
+    }
+    p.sous-titre {
+      color: #222;
+      font-size: 1.4rem;
+      margin: 1rem auto;
+      max-width: 600px;
+      transform: rotate(-1deg);
+    }
+    .bouton-inutile {
+      font-size: 1.5rem;
+      padding: 1rem 2rem;
+      border: 4px dashed #000;
+      border-radius: 50px;
+      background: #f0f;
+      color: #fff;
+      cursor: pointer;
+      margin: 2rem 0;
+      transition: transform 0.1s;
+    }
+    .bouton-inutile:hover { transform: scale(1.2) rotate(5deg); }
+    .bouton-inutile:active { transform: scale(0.9) rotate(-10deg); }
+    .compteur {
+      font-size: 1.2rem;
+      color: #000;
+      background: #ff0;
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      margin-bottom: 2rem;
+    }
+    .marquee {
+      background: #000;
+      color: #0f0;
+      font-size: 1.5rem;
+      padding: 0.5rem 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .marquee span {
+      display: inline-block;
+      animation: defile 12s linear infinite;
+    }
+    @keyframes defile {
+      0% { transform: translateX(100vw); }
+      100% { transform: translateX(-100%); }
+    }
+    .emoji-pluie {
+      position: fixed;
+      top: -50px;
+      font-size: 2rem;
+      animation: tombe linear infinite;
+      z-index: -1;
+    }
+    @keyframes tombe {
+      0% { transform: translateY(-10vh) rotate(0deg); }
+      100% { transform: translateY(110vh) rotate(720deg); }
+    }
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background: rgba(0,0,0,0.8);
+      color: #fff;
+      padding: 0.5rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="marquee"><span>🚨 ATTENTION : ce site ne sert absolument à rien 🚨 CE SITE NE SERT À RIEN 🚨.ne</span></div>
+
+  <h1>👋 Bienvenue sur le site le plus inutile du monde !</h1>
+
+  <p class="sous-titre">
+    Ici, vous ne trouverez <strong>aucune information utile</strong>,
+    <strong>aucun produit</strong> et <strong>aucun sens</strong>.
+    Et on en est très fiers.
+  </p>
+
+  <button class="bouton-inutile" id="bouton">Cliquez, ça ne fera rien</button>
+  <div class="compteur">Cliques inutiles : <span id="compteur">0</span></div>
+
+  <p class="sous-titre" style="transform: rotate(1deg)">
+    💡 Fun fact : vous avez peut-être cliqué sur le bouton.
+    Rien ne s'est passé ? Exactement comme prévu. 🎊
+  </p>
+
+  <footer>Fait avec ❤️, beaucoup trop de CSS et pensé par une IA — © personne, ça n'a aucun intérêt.</footer>
+
+  <script>
+    let clics = 0;
+    const emojis = ["🎉", "🦄", "🍕", "💀", "🐸", "✨", "🥔", "🎃"];
+    document.getElementById("bouton").addEventListener("click", () => {
+      clics++;
+      document.getElementById("compteur").textContent = clics;
+      if (clics % 5 === 0) pluieDEmojis(20);
+    });
+    function pluieDEmojis(n) {
+      for (let i = 0; i < n; i++) {
+        const e = document.createElement("div");
+        e.className = "emoji-pluie";
+        e.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        e.style.left = Math.random() * 100 + "vw";
+        e.style.animationDuration = 2 + Math.random() * 3 + "s";
+        document.body.appendChild(e);
+        setTimeout(() => e.remove(), 6000);
+      }
+    }
+    // Pluie permanente, parce que pourquoi pas
+    setInterval(() => pluieDEmojis(1), 800);
+  </script>
+</body>
+</html>
